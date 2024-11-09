@@ -33,11 +33,13 @@ public class ClassService {
 
         // Generate a list of classes with randomly assigned professors
         for (int i = 1; i <= 150; i++) {
-            String className = faker.educator().course() + " " + (100 + i); // Example: "Biology 101"
+            String classId = faker.educator().subjectWithNumber() + " ";
+            String className = faker.educator().course(); // Example: "Biology 101"
+            String description = faker.educator().university();
             List<ProfessorEntity> assignedProfessors = getRandomProfessors(professors);
-            List<Integer> grades = generateRandomGrades(50); // Generate random grades for 50 students
+        //    List<Integer> grades = generateRandomGrades(50); // Generate random grades for 50 students
 
-            classes.add(new ClassEntity((long) i, className, assignedProfessors, grades));
+            classes.add(new ClassEntity((long) i, classId, className, description, assignedProfessors));
         }
 
         // Debugging: Print the populated classes list

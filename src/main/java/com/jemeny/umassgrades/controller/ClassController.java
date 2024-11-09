@@ -26,21 +26,21 @@ public class ClassController {
         return classService.getAllClasses();
     }
 
-    @GetMapping("/{id}/grades")
-    public Map<String, Object> getClassGrades(@PathVariable Long id) {
-        ClassEntity classData = classService.getClassById(id);
-        if (classData == null) {
-            return null; // Or throw an exception if needed
-        }
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("gradeDistribution", classService.getGradeDistribution(classData.grades()));
-        response.put("statistics", Map.of(
-                "mean", classService.calculateMean(classData.grades()),
-                "median", classService.calculateMedian(classData.grades()),
-                "stdDev", classService.calculateStandardDeviation(classData.grades())
-        ));
-
-        return response;
-    }
+//    @GetMapping("/{id}/grades")
+//    public Map<String, Object> getClassGrades(@PathVariable Long id) {
+//        ClassEntity classData = classService.getClassById(id);
+//        if (classData == null) {
+//            return null; // Or throw an exception if needed
+//        }
+//
+//        Map<String, Object> response = new HashMap<>();
+////        response.put("gradeDistribution", classService.getGradeDistribution(classData.grades()));
+////        response.put("statistics", Map.of(
+////                "mean", classService.calculateMean(classData.grades()),
+////                "median", classService.calculateMedian(classData.grades()),
+////                "stdDev", classService.calculateStandardDeviation(classData.grades())
+////        ));
+//
+//        return response;
+//    }
 }
