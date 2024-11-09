@@ -1,8 +1,7 @@
 
 package com.jemeny.umassgrades.service;
 
-import com.jemeny.umassgrades.model.ClassEntity;
-import com.jemeny.umassgrades.model.ProfessorEntity;
+import com.jemeny.umassgrades.model.*;
 import com.jemeny.umassgrades.model.ClassEntity;
 import com.jemeny.umassgrades.model.ProfessorEntity;
 import jakarta.annotation.PostConstruct;
@@ -28,7 +27,19 @@ public class ClassService {
         // Generate a list of professors
         List<ProfessorEntity> professors = new ArrayList<>();
         for (int i = 1; i <= 100; i++) {
-            professors.add(new ProfessorEntity((long) i + 1,faker.name().fullName(),faker.number().randomDouble(2, 1, 5),faker.number().randomDouble(2, 1, 5), faker.internet().url()));
+            List<GradeEntity> grades = new ArrayList<>();
+            grades.add(new GradeEntity("A", 5));
+            grades.add(new GradeEntity("A-", 4));
+            grades.add(new GradeEntity("B+", 3));
+            grades.add(new GradeEntity("B", 3));
+            grades.add(new GradeEntity("B-", 2));
+            grades.add(new GradeEntity("C+", 3));
+            grades.add(new GradeEntity("C", 2));
+            grades.add(new GradeEntity("C-", 1));
+            grades.add(new GradeEntity("D+", 0));
+            grades.add(new GradeEntity("D", 0));
+            grades.add(new GradeEntity("F", 1));
+            professors.add(new ProfessorEntity((long) i + 1,faker.name().fullName(),grades));
         }
 
         // Generate a list of classes with randomly assigned professors

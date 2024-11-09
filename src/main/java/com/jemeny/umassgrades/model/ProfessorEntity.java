@@ -1,9 +1,9 @@
 package com.jemeny.umassgrades.model;
 
-public record ProfessorEntity(Long id,
-                              String name,
-                              Double rmpScore,
-                              Double rmpDiff,
-                              String rmpLink
+import java.util.List;
+
+public record ProfessorEntity(Long profId,
+                              String profName,
+                              List<GradeEntity> grades
                               ) {
 }
